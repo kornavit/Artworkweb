@@ -9,39 +9,45 @@
   <p class="h-[50px]"></p>
   
   <!-- header -->
-  <div class="grid grid-cols-4 gap-5 divide-x-4 border-solid border-2 border-green-500 rounded-md">
-    <div class="text-center">
-      Tag
-    </div>
-
-    <div class="col-span-2 text-center">
-      record
-    </div>
-
-    <div class="text-center">
-      price
-    </div>
-  </div>
-  <br>
-  <!-- body -->
-  <div v-for="task in latest"
-    class="grid grid-cols-4 gap-5 divide-x-4 border-green-500"
-  >
-      <!-- tag selecize -->
-      <div class="text-center">{{ task.tag }}</div>
-
-      <!-- type or write -->
-      <div class="col-span-2 text-center">{{ task.id }}</div>
-
-      <!-- price -->
+  <div class="container mx-auto ">
+    <div class="grid grid-cols-4 gap-5 divide-x-4 border-solid border-2 border-green-500 rounded-md">
       <div class="text-center">
-        {{ task.id }}
+        Tag
       </div>
+  
+      <div class="col-span-2 text-center">
+        record
+      </div>
+  
+      <div class="text-center">
+        price
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <!-- body -->
+  <div class="border-solid border-2 border-green-500 rounded-md container mx-auto">
+    <div v-for="task in latest"
+      class="grid grid-cols-4 gap-5 divide-x-4"
+    >
+        <!-- tag selecize -->
+        <div class="text-center">{{ task.tag }}</div>
+  
+        <!-- type or write -->
+        <div class="col-span-2 text-center">{{ task.id }}</div>
+  
+        <!-- price -->
+        <div class="text-center">{{ task.id }}</div>
+
+    </div>
   </div>
 
   <br>
-  <input type="text" v-model="newTask" class="bg-green-800 rounded-md">
-  <img src="@/assets/addtask.png" class="w-[40px] h-9" @click="addTask">
+  <div class="grid grid-cols-2 container mx-auto">
+    <input type="text" v-model="newTask" class="border-2 rounded-md " title="ใส่ชื่อเพื่อเพิ่ม tag ในตาราง">
+    <img src="@/assets/addtask.png" class="w-[25px] h-6" @click="addTask">
+  </div>
   
   <br>
   <span> {{ allTask }} </span>
@@ -94,7 +100,7 @@ export default {
   },
   methods:{
     addTask(){
-      if(this.newTask.length < 1) return;
+      if(this.newTask.length < 1) return alert('กรุณาใส่ข้อความใน tag ด้วย');
 
       this.tasks.push({
         id: this.tasks.length + 1,
